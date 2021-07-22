@@ -1,0 +1,70 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Buy car {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="container p-3 my-3 bg-dark text-white">
+		<h1 class="text-center">buy this {{z.carname}} car </h1>
+	</div>
+</div>
+
+<div class="container mt-4">
+	<div class="card col-md-8 mx-auto shadow-lg">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm">
+					<img src="{{z.carimage.url}}" height="180px" width="100%">
+				</div>
+				<div class="col">
+					<table class="table table-borderless">
+				<tr>
+					<th>Car Name </th>
+					<td>{{z.carname}}</td>
+				</tr>
+				<tr>
+					<th>Car Model</th>
+					<td>{{z.carmodel}}</td>
+				</tr>
+				<tr>
+					<th>Car Colour</th>
+					<td>{{z.carcolor}}</td>
+				</tr>
+				<tr>
+					<th>price</th>
+					<td>{{z.carprice}}</td>
+				</tr>
+			</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="card-body">
+<div class="container mt-4">
+	<div class="card col-md-5 mx-auto shadow-lg">
+		<form method="post">
+			{% csrf_token %}
+
+		<h3>Fill the information</h3>
+		{% for j in q %}
+		<div>
+			<p>{{j}}</p>
+		</div>
+		{% endfor %}
+		<div class="row">
+			<div class="col">
+				<a href="{% url 'home' %}" class="btn btn-outline-secondary form-control my-2">back</a>
+			</div>
+			<div class="col">
+                <input type="submit" value="buy" class="btn btn-outline-success form-control my-2">
+			</div>
+			</div>
+	</div>
+</form>
+</div>
+</div>
+
+{% endblock %}
+
